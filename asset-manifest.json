@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/test-parrot-ai/static/css/main.85c44442.css",
+    "main.js": "/test-parrot-ai/static/js/main.0e57ef6e.js",
+    "static/js/453.a5a847af.chunk.js": "/test-parrot-ai/static/js/453.a5a847af.chunk.js",
+    "index.html": "/test-parrot-ai/index.html",
+    "main.85c44442.css.map": "/test-parrot-ai/static/css/main.85c44442.css.map",
+    "main.0e57ef6e.js.map": "/test-parrot-ai/static/js/main.0e57ef6e.js.map",
+    "453.a5a847af.chunk.js.map": "/test-parrot-ai/static/js/453.a5a847af.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.85c44442.css",
+    "static/js/main.0e57ef6e.js"
+  ]
+}
