@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Test-parrot-ai/static/css/main.85c44442.css",
-    "main.js": "/Test-parrot-ai/static/js/main.e09ba02b.js",
+    "main.css": "/Test-parrot-ai/static/css/main.f4464b6b.css",
+    "main.js": "/Test-parrot-ai/static/js/main.5de62d8b.js",
     "static/js/453.a5a847af.chunk.js": "/Test-parrot-ai/static/js/453.a5a847af.chunk.js",
     "index.html": "/Test-parrot-ai/index.html",
-    "main.85c44442.css.map": "/Test-parrot-ai/static/css/main.85c44442.css.map",
-    "main.e09ba02b.js.map": "/Test-parrot-ai/static/js/main.e09ba02b.js.map",
+    "main.f4464b6b.css.map": "/Test-parrot-ai/static/css/main.f4464b6b.css.map",
+    "main.5de62d8b.js.map": "/Test-parrot-ai/static/js/main.5de62d8b.js.map",
     "453.a5a847af.chunk.js.map": "/Test-parrot-ai/static/js/453.a5a847af.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.85c44442.css",
-    "static/js/main.e09ba02b.js"
+    "static/css/main.f4464b6b.css",
+    "static/js/main.5de62d8b.js"
   ]
 }
