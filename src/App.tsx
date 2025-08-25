@@ -3,9 +3,10 @@ import "./App.css";
 
 function App() {
   const [submissions, setSubmissions] = useState<{ score: number; time: number }[]>([]);
-  const [score, setScore] = useState<number | "">("");
+  const [score, setScore] = useState<string>(""); // đổi thành string để dễ validate
   const [seconds, setSeconds] = useState(0);
   const [message, setMessage] = useState("");
+  const [error, setError] = useState(""); // lỗi hiển thị dưới input
 
   // Đếm giây
   useEffect(() => {
@@ -24,18 +25,27 @@ function App() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (score === "" || score < 0 || score > 100) {
-      setMessage("⚠️ Điểm phải từ 0 đến 100!");
+    if (score.trim() === "") {
+      setError("⚠️ Vui lòng không để trống!");
       return;
     }
 
-    const submission = { score: Number(score), time: seconds };
+    const numericScore = Number(score);
+
+    if (isNaN(numericScore) || numericScore < 1 || numericScore > 100) {
+      setError("⚠️ Điểm phải nằm trong khoảng 1 - 100!");
+      return;
+    }
+
+    setError(""); // clear lỗi khi hợp lệ
+
+    const submission = { score: numericScore, time: seconds };
     setSubmissions([...submissions, submission]);
 
     // Thông báo theo điều kiện
-    if (Number(score) > 90) {
+    if (numericScore > 90) {
       setMessage("🎉 Tuyệt vời!");
-    } else if (Number(score) >= 70) {
+    } else if (numericScore >= 70) {
       setMessage("👏 Chúc mừng!");
     } else {
       setMessage("⚡ Cần cố gắng hơn!");
@@ -70,17 +80,26 @@ function App() {
           </div>
         </div>
         <div className="mb-4">
-          <label className="block mb-1 font-semibold">Điểm (0-100):</label>
+          <label className="block mb-1 font-semibold">Điểm (1-100):</label>
           <input
-            type="number"
+            type="text"
             className="w-full border px-3 py-2 rounded"
             value={score}
             onChange={(e) => {
-              const val = Number(e.target.value);
-              if (val <= 100) setScore(val); // validate không cho nhập > 100
-              else setScore(100);
+              const val = e.target.value;
+
+              // Chỉ cho nhập số (không ký tự đặc biệt)
+              if (/^\d*$/.test(val)) {
+                // Nếu lớn hơn 100 thì set về 100
+                if (Number(val) > 100) {
+                  setScore("100");
+                } else {
+                  setScore(val);
+                }
+              }
             }}
           />
+          {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
         </div>
         <button
           type="submit"
@@ -110,17 +129,11 @@ function App() {
             {sortedData.map((item, idx) => (
               <tr
                 key={idx}
-                className={`hover:bg-gray-50 ${
-                  idx === 0 ? "bg-yellow-100 font-bold" : ""
-                }`}
+                className={`hover:bg-gray-50 ${idx === 0 ? "bg-yellow-100 font-bold" : ""}`}
               >
                 <td className="px-4 py-2 border-b text-sm">{idx + 1}</td>
-                <td className="px-4 py-2 border-b text-sm text-center">
-                  {item.score}
-                </td>
-                <td className="px-4 py-2 border-b text-sm text-center">
-                  {item.time}
-                </td>
+                <td className="px-4 py-2 border-b text-sm text-center">{item.score}</td>
+                <td className="px-4 py-2 border-b text-sm text-center">{item.time}</td>
               </tr>
             ))}
           </tbody>
