@@ -11,7 +11,6 @@ function App() {
   useEffect(() => {
     const interval = setInterval(() => {
       setSeconds((prev) => prev + 1);
-      console.log("Interval running");
     }, 1000);
     return () => clearInterval(interval);
   }, []);
